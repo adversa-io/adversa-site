@@ -446,18 +446,20 @@
 
     <!-- Mobile menu toggle script -->
     <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const isHidden = menu.classList.toggle('hidden');
-            this.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
-        });
-        // Close mobile menu when a link inside it is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
-                document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (menuBtn && menu) {
+            menuBtn.addEventListener('click', function() {
+                const isHidden = menu.classList.toggle('hidden');
+                this.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
             });
-        });
-    </script>
+            // Close mobile menu when a link inside it is clicked
+            menu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    menu.classList.add('hidden');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
 </body>
 </html>
