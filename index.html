@@ -3,104 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adversa - Coming Soon</title>
+    <title>Adversa.io - Monitor Competitor Websites</title>
+    <meta name="description" content="Adversa tracks your competitors' webpages, detects changes in real-time, and delivers AI-powered summaries straight to your inbox.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        foreground: '#ededed',
+                        accent: '#6366f1',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #0C1117;
-            color: #D5D1C7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 600px;
-        }
-
-        .logo {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            color: #00B6C8;
-        }
-
-        .coming-soon {
-            font-size: 1.25rem;
-            color: #D4A446;
-            margin-bottom: 1rem;
-        }
-
-        .separator {
-            width: 80px;
-            height: 2px;
-            background-color: #00B6C8;
-            margin: 2rem auto;
-        }
-
-        .description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #D5D1C7;
-        }
-
-        .footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #008A9B;
-        }
-
-        .footer p {
-            font-size: 0.875rem;
-            color: #008A9B;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1.2rem;
-            }
-
-            .coming-soon {
-                font-size: 1rem;
-            }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     </style>
 </head>
-<body>
-    <div class="container">
-        <img src="logo.png" alt="Adversa.io" class="logo">
-        <div class="separator"></div>
-        <p class="coming-soon">Coming Soon</p>
-        <p class="description">We're working on something exciting. Stay tuned for updates.</p>
-        <footer class="footer">
-            <p>&copy; 2025 Adversa.io. All rights reserved.</p>
-        </footer>
-    </div>
+<body class="bg-background text-foreground antialiased">
+    <!-- Header / Hero Section -->
+    <header class="relative min-h-screen flex flex-col">
+        <!-- Navigation -->
+        <nav class="w-full px-6 py-6 md:px-12 lg:px-24">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <a href="/" class="flex items-center gap-2">
+                    <img src="logo.png" alt="Adversa.io" class="h-8 w-auto">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features" class="text-sm text-foreground/70 hover:text-foreground transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-sm text-foreground/70 hover:text-foreground transition-colors">How It Works</a>
+                    <a href="#pricing" class="text-sm text-foreground/70 hover:text-foreground transition-colors">Pricing</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-foreground/70 hover:text-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-b border-white/10">
+                <div class="flex flex-col gap-4">
+                    <a href="#features" class="text-sm text-foreground/70 hover:text-foreground transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-sm text-foreground/70 hover:text-foreground transition-colors">How It Works</a>
+                    <a href="#pricing" class="text-sm text-foreground/70 hover:text-foreground transition-colors">Pricing</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="flex-1 flex items-center justify-center px-6 md:px-12 lg:px-24">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Abstract gradient background -->
+                <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-br from-accent/20 via-transparent to-transparent rounded-full blur-3xl opacity-30"></div>
+                </div>
+                
+                <div class="relative z-10">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+                        Monitor competitor websites.<br>
+                        <span class="text-accent">Instantly.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+                        Adversa tracks your competitors' webpages, detects changes in real-time, and delivers AI-powered summaries straight to your inbox.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#pricing" class="inline-flex items-center justify-center px-8 py-3 bg-accent hover:bg-accent/90 text-white font-medium rounded-lg transition-colors">
+                            Get Started
+                        </a>
+                        <a href="#pricing" class="inline-flex items-center justify-center px-8 py-3 border border-white/20 hover:border-white/40 text-foreground font-medium rounded-lg transition-colors">
+                            See Pricing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="pb-8 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-foreground/30 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </header>
+
+    <main>
+        <!-- Features Section -->
+        <section id="features" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                        Everything you need to stay ahead
+                    </h2>
+                    <p class="text-foreground/60 max-w-2xl mx-auto">
+                        Powerful features to monitor, analyze, and act on competitor changes.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Feature Card 1 -->
+                    <div class="p-6 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors">
+                        <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Real-time Change Detection</h3>
+                        <p class="text-sm text-foreground/60 leading-relaxed">
+                            Get notified the moment your competitors update their pages. No delays, no missed changes.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="p-6 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors">
+                        <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">AI-Generated Summaries</h3>
+                        <p class="text-sm text-foreground/60 leading-relaxed">
+                            Understand changes instantly with intelligent summaries that highlight what matters most.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="p-6 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors">
+                        <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Multi-URL Tracking</h3>
+                        <p class="text-sm text-foreground/60 leading-relaxed">
+                            Monitor multiple competitor pages simultaneously. Track pricing, features, and content updates.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 4 -->
+                    <div class="p-6 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors">
+                        <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Automatic Baselining</h3>
+                        <p class="text-sm text-foreground/60 leading-relaxed">
+                            We automatically establish baselines so you can track meaningful changes from day one.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-white/[0.01]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                        How it works
+                    </h2>
+                    <p class="text-foreground/60 max-w-2xl mx-auto">
+                        Get started in minutes with our simple three-step process.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Step 1 -->
+                    <div class="relative text-center md:text-left">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-lg mb-6">
+                            1
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Add competitor URLs</h3>
+                        <p class="text-foreground/60 leading-relaxed">
+                            Simply paste the URLs of competitor pages you want to monitor. We'll handle the rest.
+                        </p>
+                        <!-- Connector line (hidden on mobile) -->
+                        <div class="hidden md:block absolute top-6 left-[calc(100%+1rem)] w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/50 to-transparent"></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative text-center md:text-left">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-lg mb-6">
+                            2
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">We monitor changes</h3>
+                        <p class="text-foreground/60 leading-relaxed">
+                            Our system continuously monitors your tracked pages on a schedule you define.
+                        </p>
+                        <!-- Connector line (hidden on mobile) -->
+                        <div class="hidden md:block absolute top-6 left-[calc(100%+1rem)] w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/50 to-transparent"></div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="text-center md:text-left">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-lg mb-6">
+                            3
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Receive AI summaries</h3>
+                        <p class="text-foreground/60 leading-relaxed">
+                            Get detailed AI-powered summaries delivered straight to your inbox when changes occur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                        Simple, transparent pricing
+                    </h2>
+                    <p class="text-foreground/60 max-w-2xl mx-auto">
+                        Choose the plan that fits your needs. Scale as you grow.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <!-- Nano Plan -->
+                    <div class="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Nano</h3>
+                            <p class="text-sm text-foreground/60">Perfect for getting started</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$9</span>
+                            <span class="text-foreground/60">/mo</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-sm text-foreground/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Up to 5 URLs
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Daily monitoring
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Email notifications
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full py-3 text-center border border-white/20 hover:border-white/40 rounded-lg font-medium transition-colors">
+                            Choose plan
+                        </a>
+                    </div>
+
+                    <!-- Micro Plan -->
+                    <div class="p-8 rounded-2xl bg-white/[0.04] border border-accent/30 hover:border-accent/50 transition-all relative">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-white text-xs font-medium rounded-full">
+                            Popular
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Micro</h3>
+                            <p class="text-sm text-foreground/60">For growing teams</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$29</span>
+                            <span class="text-foreground/60">/mo</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-sm text-foreground/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Up to 25 URLs
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Hourly monitoring
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                AI summaries
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Slack integration
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full py-3 text-center bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-colors">
+                            Choose plan
+                        </a>
+                    </div>
+
+                    <!-- Macro Plan -->
+                    <div class="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Macro</h3>
+                            <p class="text-sm text-foreground/60">For enterprises</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$99</span>
+                            <span class="text-foreground/60">/mo</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-sm text-foreground/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Unlimited URLs
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Real-time monitoring
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Advanced AI analysis
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                API access
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Priority support
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full py-3 text-center border border-white/20 hover:border-white/40 rounded-lg font-medium transition-colors">
+                            Choose plan
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Adversa Section -->
+        <section class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-white/[0.01]">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                        Why choose Adversa?
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-1">Lightning fast</h3>
+                            <p class="text-sm text-foreground/60">Changes are detected and processed within minutes, not hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-1">Reliable monitoring</h3>
+                            <p class="text-sm text-foreground/60">99.9% uptime guarantee with redundant infrastructure.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-1">Actionable insights</h3>
+                            <p class="text-sm text-foreground/60">AI summaries help you understand changes at a glance.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-1">Time-saving</h3>
+                            <p class="text-sm text-foreground/60">Stop manually checking competitor sites. We do it for you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8 border-t border-white/[0.05]">
+                    <p class="text-foreground/50 text-sm">
+                        Built with ❤️ by an independent founder
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 md:px-12 lg:px-24 border-t border-white/[0.05]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <img src="logo.png" alt="Adversa.io" class="h-6 w-auto opacity-70">
+                </div>
+                <nav class="flex items-center gap-8">
+                    <a href="#" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Terms</a>
+                    <a href="#" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Privacy</a>
+                    <a href="#" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Contact</a>
+                </nav>
+                <p class="text-sm text-foreground/40">
+                    &copy; 2025 Adversa.io. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu toggle script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
