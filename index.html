@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adversa.io - Monitor Competitor Websites</title>
     <meta name="description" content="Adversa tracks your competitors' webpages, detects changes in real-time, and delivers AI-powered summaries straight to your inbox.">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -22,6 +22,8 @@
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     </style>
@@ -40,7 +42,7 @@
                     <a href="#how-it-works" class="text-sm text-foreground/70 hover:text-foreground transition-colors">How It Works</a>
                     <a href="#pricing" class="text-sm text-foreground/70 hover:text-foreground transition-colors">Pricing</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-foreground/70 hover:text-foreground">
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-foreground/70 hover:text-foreground" aria-label="Toggle mobile menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -86,7 +88,7 @@
 
         <!-- Scroll indicator -->
         <div class="pb-8 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-foreground/30 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-foreground/30 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
         </div>
@@ -184,7 +186,7 @@
                             Simply paste the URLs of competitor pages you want to monitor. We'll handle the rest.
                         </p>
                         <!-- Connector line (hidden on mobile) -->
-                        <div class="hidden md:block absolute top-6 left-[calc(100%+1rem)] w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/50 to-transparent"></div>
+                        <div class="hidden md:block absolute top-6 left-full ml-4 w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/50 to-transparent"></div>
                     </div>
 
                     <!-- Step 2 -->
@@ -197,7 +199,7 @@
                             Our system continuously monitors your tracked pages on a schedule you define.
                         </p>
                         <!-- Connector line (hidden on mobile) -->
-                        <div class="hidden md:block absolute top-6 left-[calc(100%+1rem)] w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/50 to-transparent"></div>
+                        <div class="hidden md:block absolute top-6 left-full ml-4 w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/50 to-transparent"></div>
                     </div>
 
                     <!-- Step 3 -->
@@ -257,7 +259,7 @@
                                 Email notifications
                             </li>
                         </ul>
-                        <a href="#" class="block w-full py-3 text-center border border-white/20 hover:border-white/40 rounded-lg font-medium transition-colors">
+                        <a href="javascript:void(0)" class="block w-full py-3 text-center border border-white/20 hover:border-white/40 rounded-lg font-medium transition-colors">
                             Choose plan
                         </a>
                     </div>
@@ -301,7 +303,7 @@
                                 Slack integration
                             </li>
                         </ul>
-                        <a href="#" class="block w-full py-3 text-center bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-colors">
+                        <a href="javascript:void(0)" class="block w-full py-3 text-center bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-colors">
                             Choose plan
                         </a>
                     </div>
@@ -348,7 +350,7 @@
                                 Priority support
                             </li>
                         </ul>
-                        <a href="#" class="block w-full py-3 text-center border border-white/20 hover:border-white/40 rounded-lg font-medium transition-colors">
+                        <a href="javascript:void(0)" class="block w-full py-3 text-center border border-white/20 hover:border-white/40 rounded-lg font-medium transition-colors">
                             Choose plan
                         </a>
                     </div>
@@ -432,9 +434,9 @@
                     <img src="logo.png" alt="Adversa.io" class="h-6 w-auto opacity-70">
                 </div>
                 <nav class="flex items-center gap-8">
-                    <a href="#" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Terms</a>
-                    <a href="#" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Privacy</a>
-                    <a href="#" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Contact</a>
+                    <a href="javascript:void(0)" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Terms</a>
+                    <a href="javascript:void(0)" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Privacy</a>
+                    <a href="javascript:void(0)" class="text-sm text-foreground/50 hover:text-foreground/80 transition-colors">Contact</a>
                 </nav>
                 <p class="text-sm text-foreground/40">
                     &copy; 2025 Adversa.io. All rights reserved.
@@ -448,6 +450,12 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+        });
+        // Close mobile menu when a link inside it is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
         });
     </script>
 </body>
