@@ -12,26 +12,26 @@ The marketing website serves as the public-facing platform for Adversa.io, while
 
 The website header includes direct access to the application:
 
-- **Login Link**: `https://app.adversa.io/`
+- **Login Link**: `https://app.adversa.io/?intent=login`
   - Location: Desktop navigation (top right)
   - Location: Mobile navigation menu
   - Purpose: Allow existing users to access their accounts
-  - Note: The application handles routing based on authentication status
+  - Query parameter hints user intent to the application
 
-- **Sign Up Button**: `https://app.adversa.io/`
+- **Sign Up Button**: `https://app.adversa.io/?intent=signup`
   - Location: Desktop navigation (highlighted button in top right)
   - Location: Mobile navigation menu
   - Purpose: Enable new users to create accounts
-  - Note: The application handles routing based on authentication status
+  - Query parameter hints user intent to the application
 
 ### 2. Hero Section CTAs
 
 The main hero section includes two primary call-to-action buttons:
 
-- **Get Started Button**: `https://app.adversa.io/`
+- **Get Started Button**: `https://app.adversa.io/?intent=signup`
   - Primary action button with accent color
-  - Directs users to the application
-  - Note: The application handles routing based on authentication status
+  - Directs users to the application with signup intent
+  - Query parameter hints user intent to the application
 
 - **See Pricing Button**: `#pricing`
   - Secondary action button
@@ -39,31 +39,33 @@ The main hero section includes two primary call-to-action buttons:
 
 ### 3. Pricing Plans
 
-All pricing plan buttons link to the application root with plan-specific query parameters:
+All pricing plan buttons link to the application root with intent and plan-specific query parameters:
 
-- **Founder Nano Plan**: `https://app.adversa.io/?plan=nano`
+- **Founder Nano Plan**: `https://app.adversa.io/?intent=signup&plan=nano`
   - Price: $9 one-time payment
   - Features: 1 competitor, up to 5 URLs, weekly scraping, email notifications
 
-- **Founder Micro Plan**: `https://app.adversa.io/?plan=micro`
+- **Founder Micro Plan**: `https://app.adversa.io/?intent=signup&plan=micro`
   - Price: $59 one-time payment (marked as "Popular")
   - Features: 1 competitor, up to 5 URLs, daily scraping, AI summaries, email notifications
 
-- **Founder Macro Plan**: `https://app.adversa.io/?plan=macro`
+- **Founder Macro Plan**: `https://app.adversa.io/?intent=signup&plan=macro`
   - Price: $179 one-time payment
   - Features: 3 competitors, up to 10 URLs each, twice daily scraping, advanced AI analysis, priority support
 
-**Query Parameters**: The `?plan=` parameter allows the application to pre-select the appropriate plan for the user, streamlining the onboarding process.
+**Query Parameters**: 
+- `intent` parameter hints user intent (login/signup) to the application
+- `plan` parameter allows the application to pre-select the appropriate plan during signup
 
 ### 4. Footer Links
 
 Footer links provide access to legal and support pages:
 
-- **Terms of Service**: `https://app.adversa.io/`
-- **Privacy Policy**: `https://app.adversa.io/`
-- **Contact**: `https://app.adversa.io/`
+- **Terms of Service**: `https://app.adversa.io/?page=terms`
+- **Privacy Policy**: `https://app.adversa.io/?page=privacy`
+- **Contact**: `https://app.adversa.io/?page=contact`
 
-**Note**: All footer links point to the application root. The application is responsible for routing users to the appropriate pages.
+**Note**: All footer links point to the application root with a `page` parameter to indicate the desired page.
 
 ## Technical Implementation
 
@@ -106,17 +108,23 @@ The main application at `https://app.adversa.io` must support:
 
 1. **Root Route Handling**:
    - `/` - Root route that handles authentication-based routing
-   - Application determines where to direct users (login, signup, dashboard, etc.) based on authentication status
+   - Application determines where to direct users (login, signup, dashboard, etc.) based on authentication status and query parameters
 
 2. **Query Parameter Handling at Root**:
-   - `?plan=nano` - Pre-select Founder Nano plan (if user needs to sign up)
-   - `?plan=micro` - Pre-select Founder Micro plan (if user needs to sign up)
-   - `?plan=macro` - Pre-select Founder Macro plan (if user needs to sign up)
+   - `?intent=login` - Hints that user wants to log in
+   - `?intent=signup` - Hints that user wants to sign up
+   - `?intent=signup&plan=nano` - User wants to sign up for Founder Nano plan
+   - `?intent=signup&plan=micro` - User wants to sign up for Founder Micro plan
+   - `?intent=signup&plan=macro` - User wants to sign up for Founder Macro plan
+   - `?page=terms` - User wants to view Terms of Service
+   - `?page=privacy` - User wants to view Privacy Policy
+   - `?page=contact` - User wants to access Contact page
 
 3. **Intelligent Routing**:
    - The application should detect authenticated users and route them appropriately
-   - Unauthenticated users should be directed to signup/login flows
+   - Unauthenticated users should be directed to signup/login flows based on `intent` parameter
    - Query parameters should be preserved and used during the signup process
+   - `page` parameters should direct users to the appropriate informational pages
 
 ### DNS & Hosting
 
