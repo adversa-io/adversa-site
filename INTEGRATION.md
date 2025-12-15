@@ -12,23 +12,26 @@ The marketing website serves as the public-facing platform for Adversa.io, while
 
 The website header includes direct access to the application:
 
-- **Login Link**: `https://app.adversa.io/login`
+- **Login Link**: `https://app.adversa.io/`
   - Location: Desktop navigation (top right)
   - Location: Mobile navigation menu
   - Purpose: Allow existing users to access their accounts
+  - Note: The application handles routing based on authentication status
 
-- **Sign Up Button**: `https://app.adversa.io/signup`
+- **Sign Up Button**: `https://app.adversa.io/`
   - Location: Desktop navigation (highlighted button in top right)
   - Location: Mobile navigation menu
   - Purpose: Enable new users to create accounts
+  - Note: The application handles routing based on authentication status
 
 ### 2. Hero Section CTAs
 
 The main hero section includes two primary call-to-action buttons:
 
-- **Get Started Button**: `https://app.adversa.io/signup`
+- **Get Started Button**: `https://app.adversa.io/`
   - Primary action button with accent color
-  - Directs users to sign up for the service
+  - Directs users to the application
+  - Note: The application handles routing based on authentication status
 
 - **See Pricing Button**: `#pricing`
   - Secondary action button
@@ -36,29 +39,31 @@ The main hero section includes two primary call-to-action buttons:
 
 ### 3. Pricing Plans
 
-All pricing plan buttons link to the signup page with plan-specific query parameters:
+All pricing plan buttons link to the application root with plan-specific query parameters:
 
-- **Founder Nano Plan**: `https://app.adversa.io/signup?plan=nano`
+- **Founder Nano Plan**: `https://app.adversa.io/?plan=nano`
   - Price: $9 one-time payment
   - Features: 1 competitor, up to 5 URLs, weekly scraping, email notifications
 
-- **Founder Micro Plan**: `https://app.adversa.io/signup?plan=micro`
+- **Founder Micro Plan**: `https://app.adversa.io/?plan=micro`
   - Price: $59 one-time payment (marked as "Popular")
   - Features: 1 competitor, up to 5 URLs, daily scraping, AI summaries, email notifications
 
-- **Founder Macro Plan**: `https://app.adversa.io/signup?plan=macro`
+- **Founder Macro Plan**: `https://app.adversa.io/?plan=macro`
   - Price: $179 one-time payment
   - Features: 3 competitors, up to 10 URLs each, twice daily scraping, advanced AI analysis, priority support
 
-**Query Parameters**: The `?plan=` parameter allows the application to pre-select the appropriate plan for the user during signup, streamlining the onboarding process.
+**Query Parameters**: The `?plan=` parameter allows the application to pre-select the appropriate plan for the user, streamlining the onboarding process.
 
 ### 4. Footer Links
 
 Footer links provide access to legal and support pages:
 
-- **Terms of Service**: `https://app.adversa.io/terms`
-- **Privacy Policy**: `https://app.adversa.io/privacy`
-- **Contact**: `https://app.adversa.io/contact`
+- **Terms of Service**: `https://app.adversa.io/`
+- **Privacy Policy**: `https://app.adversa.io/`
+- **Contact**: `https://app.adversa.io/`
+
+**Note**: All footer links point to the application root. The application is responsible for routing users to the appropriate pages.
 
 ## Technical Implementation
 
@@ -72,10 +77,11 @@ Main Application: https://app.adversa.io/
 ### Integration Pattern
 
 The integration follows a simple static linking approach:
-1. All application links use absolute URLs pointing to `https://app.adversa.io`
-2. Query parameters are used to pass context (e.g., plan selection)
-3. No JavaScript API calls or dynamic content loading required
-4. Pure HTML anchor tags with `href` attributes
+1. All application links use absolute URLs pointing to `https://app.adversa.io/` (root)
+2. Query parameters are used to pass context (e.g., plan selection for pricing links)
+3. The application handles all routing based on user authentication status
+4. No JavaScript API calls or dynamic content loading required
+5. Pure HTML anchor tags with `href` attributes
 
 ### User Flow
 
@@ -83,9 +89,13 @@ The integration follows a simple static linking approach:
 1. User visits adversa.io
 2. User browses features, pricing, and information
 3. User clicks on a CTA or pricing plan button
-4. User is redirected to app.adversa.io with appropriate context
-5. User completes signup or login in the application
-6. User begins using the monitoring service
+4. User is redirected to app.adversa.io (root) with optional query parameters
+5. Application determines routing based on:
+   - User authentication status (logged in or not)
+   - Query parameters (e.g., plan selection)
+   - Context of the request
+6. User completes signup, login, or is routed to appropriate page
+7. User begins using the monitoring service
 ```
 
 ## Configuration Requirements
@@ -94,19 +104,19 @@ The integration follows a simple static linking approach:
 
 The main application at `https://app.adversa.io` must support:
 
-1. **Authentication Routes**:
-   - `/login` - User login page
-   - `/signup` - User registration page
+1. **Root Route Handling**:
+   - `/` - Root route that handles authentication-based routing
+   - Application determines where to direct users (login, signup, dashboard, etc.) based on authentication status
 
-2. **Query Parameter Handling**:
-   - `?plan=nano` - Pre-select Founder Nano plan
-   - `?plan=micro` - Pre-select Founder Micro plan
-   - `?plan=macro` - Pre-select Founder Macro plan
+2. **Query Parameter Handling at Root**:
+   - `?plan=nano` - Pre-select Founder Nano plan (if user needs to sign up)
+   - `?plan=micro` - Pre-select Founder Micro plan (if user needs to sign up)
+   - `?plan=macro` - Pre-select Founder Macro plan (if user needs to sign up)
 
-3. **Legal & Support Pages**:
-   - `/terms` - Terms of Service
-   - `/privacy` - Privacy Policy
-   - `/contact` - Contact page
+3. **Intelligent Routing**:
+   - The application should detect authenticated users and route them appropriately
+   - Unauthenticated users should be directed to signup/login flows
+   - Query parameters should be preserved and used during the signup process
 
 ### DNS & Hosting
 
@@ -125,17 +135,19 @@ Since the integration uses simple navigation (HTML links) rather than API calls:
 
 ### Manual Testing Checklist
 
-- [ ] Desktop navigation "Login" button redirects to app login page
-- [ ] Desktop navigation "Sign Up" button redirects to app signup page
+- [ ] Desktop navigation "Login" button redirects to app root
+- [ ] Desktop navigation "Sign Up" button redirects to app root
 - [ ] Mobile menu "Login" link works correctly
 - [ ] Mobile menu "Sign Up" link works correctly
-- [ ] Hero "Get Started" button redirects to app signup
+- [ ] Hero "Get Started" button redirects to app root
 - [ ] Founder Nano plan button includes `?plan=nano` parameter
 - [ ] Founder Micro plan button includes `?plan=micro` parameter
 - [ ] Founder Macro plan button includes `?plan=macro` parameter
-- [ ] Footer "Terms" link goes to app terms page
-- [ ] Footer "Privacy" link goes to app privacy page
-- [ ] Footer "Contact" link goes to app contact page
+- [ ] Footer "Terms" link redirects to app root
+- [ ] Footer "Privacy" link redirects to app root
+- [ ] Footer "Contact" link redirects to app root
+- [ ] Application correctly routes users based on authentication status
+- [ ] Query parameters are preserved during routing
 
 ### Validation
 
@@ -153,10 +165,11 @@ grep -n "javascript:void(0)" index.html
 
 When adding new links to the application:
 
-1. Use absolute URLs: `https://app.adversa.io/path`
-2. Include relevant query parameters for context
-3. Update this documentation with new integration points
-4. Test the link in both desktop and mobile views
+1. Use absolute URLs pointing to root: `https://app.adversa.io/`
+2. Include relevant query parameters for context (e.g., `?plan=nano`)
+3. Let the application handle routing based on authentication
+4. Update this documentation with new integration points
+5. Test the link in both desktop and mobile views
 
 ### Updating Links
 
@@ -172,12 +185,16 @@ If the application URL structure changes:
 ### Common Issues
 
 **Issue**: Links not working or showing 404 errors
-- **Solution**: Verify the application routes exist and are accessible
-- **Check**: Ensure `app.adversa.io` is properly configured and deployed
+- **Solution**: Verify the application root route is properly configured
+- **Check**: Ensure `app.adversa.io` is properly deployed and the root route handles routing
 
 **Issue**: Query parameters not being recognized by the application
-- **Solution**: Confirm the application's signup page handles the `plan` parameter
-- **Check**: Review application code for parameter parsing
+- **Solution**: Confirm the application's root route handles the `plan` parameter
+- **Check**: Review application code for parameter parsing at the root level
+
+**Issue**: Users not being routed correctly
+- **Solution**: Verify the application's authentication-based routing logic
+- **Check**: Test with both authenticated and unauthenticated users
 
 **Issue**: Mobile menu not showing new navigation items
 - **Solution**: Clear browser cache and reload
@@ -191,6 +208,11 @@ For integration issues or questions:
 - Review application logs for routing issues
 
 ## Changelog
+
+### 2025-12-15
+- Updated all links to point to application root (`https://app.adversa.io/`)
+- Application now handles routing based on authentication status
+- Simplified integration pattern with centralized routing logic
 
 ### 2025-12-14
 - Initial integration implementation
