@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Getting Started with Adversa | Documentation</title>
+    <meta name="description" content="Learn how to set up your first competitor page monitor in Adversa and receive AI-powered change summaries." />
+    <link rel="canonical" href="https://adversa.io/docs/getting-started" />
+
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        foreground: '#ededed',
+                        accent: '#6366f1'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-KkzXZ40mkomXnkWZt5euZ.js"></script>
+    <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+    </script>
+
+    <meta property="og:title" content="Getting Started with Adversa | Documentation">
+    <meta property="og:description" content="Learn how to set up your first competitor page monitor in Adversa and receive AI-powered change summaries.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adversa.io/docs/getting-started">
+    <meta property="og:image" content="https://adversa.io/images/og-adversa.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Getting Started with Adversa | Documentation">
+    <meta name="twitter:description" content="Learn how to set up your first competitor page monitor in Adversa and receive AI-powered change summaries.">
+    <meta name="twitter:image" content="https://adversa.io/images/og-adversa.png">
+</head>
+<body class="bg-background text-foreground antialiased font-sans">
+
+    <!-- Navigation -->
+    <nav class="w-full px-6 py-6 md:px-12 lg:px-24 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="/" class="text-lg font-semibold tracking-tight text-white">
+                Adversa
+            </a>
+            <a href="/docs" class="text-sm text-foreground/70 hover:text-foreground transition-colors">
+                ← Back to docs
+            </a>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <main class="px-6 md:px-12 lg:px-24 py-16 md:py-20">
+        <div class="max-w-3xl mx-auto">
+            <header class="mb-12">
+                <p class="text-sm font-semibold tracking-wide text-accent uppercase mb-4">
+                    Documentation
+                </p>
+
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">
+                    Getting Started with Adversa
+                </h1>
+
+                <p class="text-lg text-foreground/70 leading-relaxed">
+                    Adversa helps you monitor competitor websites and receive AI-powered summaries whenever
+                    something changes. Here is how to get set up in a few minutes.
+                </p>
+            </header>
+
+            <section class="space-y-8 text-foreground/80 leading-relaxed text-lg">
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        1. Create a monitor
+                    </h2>
+                    <p>
+                        Start by creating a new monitor inside Adversa. Each monitor tracks a single competitor
+                        page and checks it periodically for changes. You can create as many monitors as your
+                        plan allows, covering different competitors or different pages from the same competitor.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        2. Add the competitor page URL
+                    </h2>
+                    <p>
+                        Enter the URL of the page you want to track. Good starting points include competitor
+                        pricing pages, product pages, feature lists, changelogs, and blog posts. Any page that
+                        changes meaningfully over time is worth monitoring.
+                    </p>
+                    <p class="mt-4">
+                        If you are not sure which pages to add first, see the guide on
+                        <a href="/docs/what-pages-to-monitor.html" class="text-accent hover:text-accent/80 transition-colors">what competitor pages are most useful to monitor</a>.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        3. Choose monitoring frequency
+                    </h2>
+                    <p>
+                        Adversa checks the monitored page periodically and compares each new snapshot against
+                        the previous version. You can choose how frequently Adversa checks — daily monitoring
+                        is a good default for most competitor pages, giving you timely updates without
+                        unnecessary noise.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        4. Receive alerts and AI summaries
+                    </h2>
+                    <p>
+                        When Adversa detects a change, it highlights exactly what is different and generates
+                        a concise AI summary explaining what changed and why it might matter for your business.
+                        Instead of wading through a raw diff, you get a plain-language explanation of the
+                        update delivered straight to your inbox.
+                    </p>
+                    <p class="mt-4">
+                        To understand how these summaries are generated, see
+                        <a href="/docs/how-ai-summaries-work.html" class="text-accent hover:text-accent/80 transition-colors">how AI change summaries work</a>.
+                    </p>
+                </div>
+
+                <!-- CTA Block -->
+                <section class="mt-16 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                    <h3 class="text-2xl font-semibold text-white mb-4">
+                        Ready to start monitoring competitors?
+                    </h3>
+                    <p class="text-foreground/70 mb-6">
+                        Set up your first monitor in under 2 minutes and start receiving AI-powered competitor
+                        change summaries.
+                    </p>
+                    <a
+                        href="https://app.adversa.io/?intent=signup"
+                        class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-accent/90 text-white font-medium rounded-lg transition-colors"
+                    >
+                        Get Founder Access →
+                    </a>
+                    <p class="text-sm text-foreground/50 mt-3">
+                        Setup takes under 2 minutes.
+                    </p>
+                </section>
+
+                <!-- Related guides -->
+                <div class="pt-4 border-t border-white/[0.05]">
+                    <h2 class="text-xl font-semibold text-white mb-4">Related guides</h2>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/docs/what-pages-to-monitor.html" class="text-accent hover:text-accent/80 transition-colors">
+                                What Competitor Pages Should You Monitor?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/how-ai-summaries-work.html" class="text-accent hover:text-accent/80 transition-colors">
+                                How AI Change Summaries Work
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-10 text-center text-sm text-foreground/50">
+        <p>
+            © 2026 Adversa.io
+        </p>
+    </footer>
+
+</body>
+</html>

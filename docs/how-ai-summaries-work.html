@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>How AI Change Summaries Work | Adversa Docs</title>
+    <meta name="description" content="See how Adversa detects website changes and turns them into concise AI-powered summaries with business context." />
+    <link rel="canonical" href="https://adversa.io/docs/how-ai-summaries-work" />
+
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        foreground: '#ededed',
+                        accent: '#6366f1'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-KkzXZ40mkomXnkWZt5euZ.js"></script>
+    <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+    </script>
+
+    <meta property="og:title" content="How AI Change Summaries Work | Adversa Docs">
+    <meta property="og:description" content="See how Adversa detects website changes and turns them into concise AI-powered summaries with business context.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adversa.io/docs/how-ai-summaries-work">
+    <meta property="og:image" content="https://adversa.io/images/og-adversa.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How AI Change Summaries Work | Adversa Docs">
+    <meta name="twitter:description" content="See how Adversa detects website changes and turns them into concise AI-powered summaries with business context.">
+    <meta name="twitter:image" content="https://adversa.io/images/og-adversa.png">
+</head>
+<body class="bg-background text-foreground antialiased font-sans">
+
+    <!-- Navigation -->
+    <nav class="w-full px-6 py-6 md:px-12 lg:px-24 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="/" class="text-lg font-semibold tracking-tight text-white">
+                Adversa
+            </a>
+            <a href="/docs" class="text-sm text-foreground/70 hover:text-foreground transition-colors">
+                ← Back to docs
+            </a>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <main class="px-6 md:px-12 lg:px-24 py-16 md:py-20">
+        <div class="max-w-3xl mx-auto">
+            <header class="mb-12">
+                <p class="text-sm font-semibold tracking-wide text-accent uppercase mb-4">
+                    Documentation
+                </p>
+
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">
+                    How AI Change Summaries Work
+                </h1>
+
+                <p class="text-lg text-foreground/70 leading-relaxed">
+                    Adversa combines page change detection with AI summarisation so you can quickly
+                    understand what changed and why it matters, without having to compare page versions
+                    yourself.
+                </p>
+            </header>
+
+            <section class="space-y-8 text-foreground/80 leading-relaxed text-lg">
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        Step 1: Adversa periodically checks a monitored page
+                    </h2>
+                    <p>
+                        Once you add a competitor page to Adversa, it is checked on a regular schedule.
+                        Adversa fetches the current version of the page and saves a snapshot so it can
+                        compare it against future versions.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        Step 2: The updated content is compared against the previous version
+                    </h2>
+                    <p>
+                        When a new snapshot is taken, Adversa compares it to the most recent previous
+                        version. This comparison identifies exactly what content was added, removed, or
+                        modified on the page since the last check.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        Step 3: The important differences are identified
+                    </h2>
+                    <p>
+                        Not every change is meaningful. Adversa filters out noise — things like minor layout
+                        tweaks, cookie banners, or dynamic content that changes on every page load — and
+                        focuses on the content differences that are likely to be significant. This keeps
+                        alerts relevant rather than overwhelming.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">
+                        Step 4: AI generates a concise summary of the update
+                    </h2>
+                    <p>
+                        Rather than sending you a raw list of changed text, Adversa uses AI to write a
+                        short, plain-language summary of what changed and why it might matter for your
+                        business. For example, instead of showing you that three sentences on a pricing
+                        page were replaced, Adversa might explain that a competitor removed their free plan
+                        and introduced a new enterprise tier.
+                    </p>
+                    <p class="mt-4">
+                        This means you spend less time interpreting alerts and more time acting on
+                        competitive insights.
+                    </p>
+                </div>
+
+                <!-- CTA Block -->
+                <section class="mt-16 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                    <h3 class="text-2xl font-semibold text-white mb-4">
+                        See AI summaries in action
+                    </h3>
+                    <p class="text-foreground/70 mb-6">
+                        Try Adversa and start receiving AI-powered summaries whenever a competitor page
+                        changes, delivered straight to your inbox.
+                    </p>
+                    <a
+                        href="https://app.adversa.io/?intent=signup"
+                        class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-accent/90 text-white font-medium rounded-lg transition-colors"
+                    >
+                        Get Founder Access →
+                    </a>
+                    <p class="text-sm text-foreground/50 mt-3">
+                        Setup takes under 2 minutes.
+                    </p>
+                </section>
+
+                <!-- Related guides -->
+                <div class="pt-4 border-t border-white/[0.05]">
+                    <h2 class="text-xl font-semibold text-white mb-4">Related guides</h2>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/docs/getting-started.html" class="text-accent hover:text-accent/80 transition-colors">
+                                Getting Started with Adversa
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/what-pages-to-monitor.html" class="text-accent hover:text-accent/80 transition-colors">
+                                What Competitor Pages Should You Monitor?
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-10 text-center text-sm text-foreground/50">
+        <p>
+            © 2026 Adversa.io
+        </p>
+    </footer>
+
+</body>
+</html>
